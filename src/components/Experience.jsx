@@ -42,7 +42,7 @@ const Experience = () => {
             </motion.button>
           </div>
       </div>
-      <div className="absolute h-[500vh] inset-0 z-0">
+      <div className="absolute h-[400vh] inset-0 z-0">
        <GalaxyCanvas />
       </div>
     </section>

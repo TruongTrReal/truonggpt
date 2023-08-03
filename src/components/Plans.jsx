@@ -73,7 +73,7 @@ const PlanCard = ({ title, icon, price, features, index, backgroundColor, star }
 
 const Plans = () => {
   return (
-    <div className="">
+    <div className="relative z-10">
         <h1 className="text-4xl font-bold font-sans mb-5">
             Tính năng các gói  <br /> <span className="blue-text-gradient">ID VPS K671 - VÕ NHẬT TRƯỜNG</span>
         </h1>
