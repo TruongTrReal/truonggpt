@@ -9,19 +9,22 @@ const Hero = () => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
   const updateRotation = (event) => {
-    const { clientX, clientY } = event;
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
+    // Check if the screen width is greater than a threshold (e.g., 768px for mobile)
+    if (window.innerWidth > 768) {
+      const { clientX, clientY } = event;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
 
-    const deltaX = clientX - centerX;
-    const deltaY = clientY - centerY;
+      const deltaX = clientX - centerX;
+      const deltaY = clientY - centerY;
 
-    const sensitivity = 0.1;
+      const sensitivity = 0.1;
 
-    const newRotationX = deltaY * sensitivity;
-    const newRotationY = deltaX * sensitivity;
+      const newRotationX = deltaY * sensitivity;
+      const newRotationY = deltaX * sensitivity;
 
-    setRotation({ x: newRotationX, y: newRotationY });
+      setRotation({ x: newRotationX, y: newRotationY });
+    }
   };
 
   useEffect(() => {
