@@ -1,0 +1,8 @@
+Model Information:
+* title:	Ungarisches Steppenrind
+* source:	https://sketchfab.com/3d-models/ungarisches-steppenrind-6c6b19d0a86e472a968c4fbad8a45636
+* author:	noe-3d.at (https://sketchfab.com/www.noe-3d.at)
+
+Model License:
+* license type:	CC0-1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+* requirements:	Credit is not mandatory. Commercial use is allowed.
