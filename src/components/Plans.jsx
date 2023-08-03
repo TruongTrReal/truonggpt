@@ -68,23 +68,13 @@ const PlanCard = ({ title, icon, price, features, index, backgroundColor, star }
       </motion.div>
     </button>
   );
-const PlanwrapperStyle = {
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
-    width: "100vw",
-  };
+
 
 
 const Plans = () => {
   return (
-    <div style={PlanwrapperStyle}>
-        <h1 style={{ fontSize: "48px", fontWeight: "bold", fontFamily: "sans-serif", marginBottom: "20px" }}>
+    <div className="">
+        <h1 className="text-4xl font-bold font-sans mb-5">
             Tính năng các gói  <br /> <span className="blue-text-gradient">ID VPS K671 - VÕ NHẬT TRƯỜNG</span>
         </h1>
         <div className='mt-20 flex flex-wrap gap-10 justify-center sm:mt-0'>

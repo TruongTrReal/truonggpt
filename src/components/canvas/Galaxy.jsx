@@ -34,6 +34,7 @@ const GalaxyCanvas = () => {
           autoRotate
           autoRotateSpeed={.5}
           enableZoom={false}
+          enableRotate={false}
           maxPolarAngle={Math.PI / 1}
           minPolarAngle={Math.PI / 3}
         />

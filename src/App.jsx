@@ -28,40 +28,25 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='relative z-0 bg-primary'>
+
         <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
           <Hero />
           <Navbar />
         </div>
 
         <About />
-        <div className='' style={
-          {
-            width: '100vw',
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
-            margin: '0 auto',
-          }
-        }>
-          <Experience />
-        </div>
-        <div className='relative z-0'>
-          <Groups handleMainButtonClick={handleButtonClick} secondaryButtonsData={secondaryButtonsData} />
-        </div>
-        <div className='relative mt-[100%] mb-[70%] sm:mt-0 sm:mb-0' style={
-          {
-            width: '100vw',
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
-          }
-        }>
-          <Plans />
-        </div>
+
+        <Experience />
+
+        <Groups handleMainButtonClick={handleButtonClick} secondaryButtonsData={secondaryButtonsData} />
+
+        <Plans />
+
         <div className='relative z-0'>
           <Contact />
           <StarsCanvas />
         </div>
+        
       </div>
     </BrowserRouter>
   )
