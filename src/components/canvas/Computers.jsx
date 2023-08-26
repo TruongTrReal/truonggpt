@@ -1,8 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Loader, OrbitControls, Preload, useGLTF } from "@react-three/drei";
-
-import CanvasLoader from "../Loader";
+import CanvasLoader from '../Loader'
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("./ungarisches_steppenrind/scene.gltf");

@@ -3,15 +3,12 @@ import 'react-vertical-timeline-component/style.min.css'
 import { SectionWrapper } from "../hoc"
 import React from "react";
 import { GalaxyCanvas } from "./canvas";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const Experience = () => {
   const handleButtonClick = () => {
-    window.open("https://t.me/TruongGPT_bot", "_blank");
   };
-
-
-
 
   const contentStyle = {
   };
@@ -23,7 +20,7 @@ const Experience = () => {
             <h1 className="text-4xl font-bold font-sans m-[20px]">
               Trải nghiệm <span className="blue-text-gradient">FREE</span> ngay hôm nay!
             </h1>
-            <motion.button
+            <Link to="/chat"><motion.button
               onClick={handleButtonClick}
               style={{
                 margin: "20px",
@@ -38,8 +35,8 @@ const Experience = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              TruongGPT trên Telegram
-            </motion.button>
+              TruongGPT
+            </motion.button></Link>
           </div>
       </div>
       <div className="absolute h-[400vh] inset-0 z-0">

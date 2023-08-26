@@ -2,7 +2,7 @@
 import { defineConfig } from "file:///C:/Users/truon/OneDrive/M%C3%A1y%20t%C3%ADnh/truonggpt.com/node_modules/vite/dist/node/index.js";
 import react from "file:///C:/Users/truon/OneDrive/M%C3%A1y%20t%C3%ADnh/truonggpt.com/node_modules/@vitejs/plugin-react/dist/index.mjs";
 var vite_config_default = defineConfig({
-  plugins: [react()]
+  plugins: [react(), impala()]
 });
 export {
   vite_config_default as default

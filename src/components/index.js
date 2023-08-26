@@ -2,24 +2,28 @@ import { EarthCanvas, BallCanvas, ComputersCanvas, StarsCanvas, GalaxyCanvas } f
 import Hero from './Hero';
 import Navbar from './Navbar';
 import About from './About';
-import Tech from './Tech';
 import Experience from './Experience';
-import Works from './Works';
-import Feedbacks from './Feedbacks';
 import Contact from './Contact';
 import Groups from './Groups';
 import Plans from './Plans';
+import FreeComponent from './FreeComponent';
+import AuthComponent from './AuthComponent';
+import ProtectedRoutes from './ProtectedRoutes';
+import {ChatMessage} from './ChatMessage';
+import {Welcome} from './Welcome';
 
 export {
   Hero,
   Navbar,
   About,
-  Tech,
   Experience,
-  Works,
-  Feedbacks,
   Contact,
   Plans,
+  FreeComponent,
+  AuthComponent,
+  ProtectedRoutes,
+  ChatMessage,
+  Welcome,
   Groups,
   EarthCanvas, 
   BallCanvas, 

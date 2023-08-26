@@ -1,0 +1,15 @@
+[build]
+publish = "dist/static"
+command = "npm run build"
+
+[dev]
+command = "npm run dev"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+[template.environment]
+OPENAI_API_KEY = "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"
+
