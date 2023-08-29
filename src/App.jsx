@@ -1,10 +1,7 @@
-import { HashRouter, BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
 import Home from "./Home";
-import LoginPage from "./components/LoginPage";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import SignupPage from "./components/SignupPage";
-import { AuthComponent } from "./components";
+import { AuthComponent, SignupPage, ProtectedRoutes, LoginPage, Plans } from "./components";
 import "./index.css";
  
 function App() {
@@ -15,6 +12,7 @@ function App() {
          <Route path="*" element={<Home />} />
          <Route path="/login" element={<LoginPage />} />
          <Route path="/signup" element={<SignupPage />} />
+         <Route path="/plans" element={<Plans />} />
          
          {/* Protected Routes */}
          <Route element={<ProtectedRoutes />}>

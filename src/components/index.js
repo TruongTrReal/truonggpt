@@ -11,6 +11,9 @@ import AuthComponent from './AuthComponent';
 import ProtectedRoutes from './ProtectedRoutes';
 import {ChatMessage} from './ChatMessage';
 import {Welcome} from './Welcome';
+import LoginPage from './LoginPage';
+import SignupPage from './SignupPage';
+
 
 export {
   Hero,
@@ -19,6 +22,8 @@ export {
   Experience,
   Contact,
   Plans,
+  LoginPage,
+  SignupPage,
   FreeComponent,
   AuthComponent,
   ProtectedRoutes,

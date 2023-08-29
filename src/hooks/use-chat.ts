@@ -62,7 +62,7 @@ export function useChat() {
       const newContent = response.data;
   
       // Send the API response as the assistant's message
-      return { role: "function", name: newContent.name, content: newContent.content } as const;
+      return { role: "function", name: newContent.name, content: "!IMPORTANT: USE INFORMATION TO ANALYZE AND ANSWER QUESTION, DO NOT REPEAT INFORMATION\n" + newContent.content } as const;
     } catch (error) {
       return { role: "function", name: "guide", content: "read user question and answer with your latest knowledge, If don't know the answer, try to joke a round and move to different topic" } as const;
     }

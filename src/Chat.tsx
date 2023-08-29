@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Chat.css";
+import "./index.css";
 import { Head } from "@impalajs/react/head";
 
 interface AppProps {
@@ -15,7 +15,7 @@ export const Chat: React.FC<React.PropsWithChildren<AppProps>> = ({
       <div>
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Create your own AI chat bot" />
+        <meta name="description" content="TruongGPT" />
       </div>
       {children}
     </>

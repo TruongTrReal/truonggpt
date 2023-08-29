@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, ReactNode  } from "react";
 import { Chat } from "../Chat";
 import { useChat } from "../hooks/use-chat";
 import { ChatMessage } from "../components/ChatMessage";
@@ -6,12 +6,13 @@ import { appConfig } from "../../config.browser";
 import { Welcome } from "../components/Welcome";
 
 interface IndexProps {
+  email: string;
   plan: string;
+  logOut: () => Promise<boolean>;
+  planButton: ReactNode;
 }
 
-export default function Index({ plan }: IndexProps) {
-  
-  console.log("plan", plan);
+export default function Index({ plan, email, logOut, planButton }: IndexProps) {
 
   const canAccessGPT35 = plan === "FREE" || plan === "PRO" || plan === "PREMIUM";
   const canAccessGPT4 = plan === "PRO" || plan === "PREMIUM";
@@ -61,21 +62,68 @@ export default function Index({ plan }: IndexProps) {
     inputRef.current?.focus();
   };
 
+  const [isDivVisible, setIsDivVisible] = useState(false); // State to control div visibility
+
+  const toggleDivVisibility = () => {
+    setIsDivVisible((prev) => !prev); // Toggle div visibility
+  };
+
   useEffect(() => {
     focusInput();
   }, [state]);
 
 
   return (
-    <Chat title="Create your own AI chat bot">
-      <main className="bg-white md:rounded-lg md:shadow-md p-6 w-full h-full flex flex-col">
+    <Chat title="TruongGPT">
+      <main className="bg-black-700 md:rounded-lg md:shadow-md w-full h-full flex flex-col">
+
+        {/* Toggle Button (Visible on Mobile) */}
+        <div className="bg-black-700 w-full sticky mb-5 top-0 md:hidden">
+          <button
+            className="block md:hidden bg-purple-500 text-white p-2 rounded"
+            onClick={toggleDivVisibility}
+          >
+            Menu
+          </button>
+        </div>
+
+        {/* Animated div */}
+        <div
+          className={`md:hidden z-10 fixed top-0 left-0 h-[100vh] w-4/5 bg-gray-200 transform ${
+            isDivVisible ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 ease-in-out`}
+        >
+          <button
+            className="block md:hidden text-black text-3xl p-5 absolute top-0 right-0"
+            onClick={toggleDivVisibility}
+          >
+            X
+          </button>
+          <div className="flex flex-col items-center justify-center w-full p-10">
+            <p className="w-full text-black mb-4">🐧🚀{email}</p>
+            <p className="w-full text-black mb-4">Gói: {plan}</p>
+            {planButton}
+            <a
+              href="/" // Path you want to redirect to
+              className="bg-green-500 text-white p-2 rounded mt-5 mb-5 block"
+            >
+              Trang chủ
+            </a>
+            <button
+              className="absolute bottom-5 bg-blue-500 text-white px-4 py-2 rounded"
+              onClick={logOut}
+            >
+              Đăng Xuất 🚪.
+            </button>
+          </div>
+        </div>
 
         <section className="overflow-y-auto flex-grow mb-4 pb-8">
           <div className="flex flex-col space-y-4">
             {chatHistory.length === 0 ? (
               <>
                 <Welcome />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="text-black grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {appConfig.samplePhrases.map((phrase) => (
                     <button
                       key={phrase}
@@ -85,17 +133,6 @@ export default function Index({ plan }: IndexProps) {
                       {phrase}
                     </button>
                   ))}
-                </div>
-                <div className="flex justify-center">
-                  <p className="text-sm text-gray-500 mt-5">
-                    Built with 🤖{" "}
-                    <a
-                      className="underline"
-                      href="https://github.com/ascorbic/daneel"
-                    >
-                      Daneel
-                    </a>
-                  </p>
                 </div>
               </>
             ) : (
@@ -110,10 +147,10 @@ export default function Index({ plan }: IndexProps) {
           <div ref={bottomRef} />
         </section>
 
-        <div className="flex items-center justify-center h-20">
+        <div className="">
           {state === "idle" ? null : (
             <button
-              className="bg-gray-100 text-gray-900 py-2 px-4 my-8"
+              className="h-10 bg-gray-100 text-gray-900 py-2 px-4 my-8"
               onClick={cancel}
             >
               Stop generating
@@ -121,13 +158,13 @@ export default function Index({ plan }: IndexProps) {
           )}
         </div>
 
-        <section className="bg-gray-100 rounded-lg p-2">
+        <section className=" rounded-lg p-2 sticky bottom-0">
           <div className="flex justify-center space-x-4 mb-4">
 
             <button
               className={`${
-                selectedModel === "gpt-3.5-turbo-16k" ? "bg-blue-500" : "bg-gray-300"
-              } text-white py-2 px-4 rounded-lg`}
+                selectedModel === "gpt-3.5-turbo-16k" ? "bg-purple-500" : "bg-gray-300"
+              } text-black py-2 px-4 rounded-lg`}
               onClick={() => setSelectedModel("gpt-3.5-turbo-16k")}
             >
                 GPT-3.5
@@ -135,8 +172,8 @@ export default function Index({ plan }: IndexProps) {
 
             <button
               className={`${
-                selectedModel === "gpt-4-0613" ? "bg-blue-500" : "bg-gray-300"
-              } text-white py-2 px-4 rounded-lg`}
+                selectedModel === "gpt-4-0613" ? "bg-purple-700" : "bg-gray-300"
+              } text-black py-2 px-4 rounded-lg`}
               onClick={handleGPT4ButtonClick}
               title="Switch to GPT-4"
             >
