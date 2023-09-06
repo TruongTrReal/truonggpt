@@ -9,9 +9,8 @@ If the user asks other questions, do not answer and deflect them with your stock
 export const samplePhrases = [
   "Phân tích cơ bản FPT theo quý.",
   "Phân tích kỹ thuật cổ phiếu FPT.",
+  "Phân tích giao dịch ngày hôm nay của FPT, cá mập đang mua hay bán?",
   "Tình hình ngành bất động sản hiện tại ra sao?",
   "Khuyến nghị cho tôi 1 cổ phiếu tốt trong ngắn hạn.",
-  "So sánh NVL với các mã cùng ngành",
-  "So sánh DCM với DIG, TCH",
-  "Hôm nay VCG giao dịch thế nào? tay to mua bán bao nhiêu?"
+  "So sánh DCM với DIG, TCH"
 ];
