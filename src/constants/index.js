@@ -60,7 +60,7 @@ import {
     {
       title: "PRO",
       icon: "🔥",
-      price: "1.950.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 100.000.000đ",
+      price: "1.450.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 100.000.000đ",
       features: [
         "- GPT-4 access",
         "- AI Phân tích kỹ thuật cổ phiếu",
@@ -74,7 +74,7 @@ import {
     {
       title: "PREMIUM",
       icon: "🚀",
-      price: "5.850.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 1.000.000.000đ",
+      price: "2.850.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 1.000.000.000đ",
       features: [
         "- Hướng dẫn phân tích cổ phiếu bằng AI (nâng cao, prompt chuyên sâu)",
         "- TruongGPT khuyến nghị cổ phiếu tiềm năng bằng AI",

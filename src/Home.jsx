@@ -16,10 +16,6 @@ const Home = () => {
       link: "https://t.me/reviewchungkhoan_chat",
     },
     {
-      description: "Nhóm Tin Chứng Khoán 24/7 FlashBot",
-      link: "https://t.me/chungkhoanmoinhat",
-    },
-    {
       description: "Telegram Founder TruongGPT",
       link: "https://t.me/truonggpt",
     },
