@@ -21,7 +21,9 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
   
   // The content of the box where the user is typing
   const [message, setMessage] = useState<string>("");
+  const [inputHeight, setInputHeight] = useState<number | null>(null);
 
+  const maxTextAreaHeight = 200;
 
   const [showGPT4Message, setShowGPT4Message] = useState(false);
 
@@ -72,6 +74,8 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
     focusInput();
   }, [state]);
 
+  
+
 
   return (
     <Chat title="TruongGPT">
@@ -83,7 +87,7 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
             className="block md:hidden bg-purple-500 text-white p-2 rounded"
             onClick={toggleDivVisibility}
           >
-            Menu
+            Truonggpt.com
           </button>
         </div>
 
@@ -109,6 +113,44 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
             >
               Trang chủ
             </a>
+
+            <div className="flex justify-between space-x-4 mb-4">
+
+              <button
+                className={`${
+                  selectedModel === "gpt-3.5-turbo-16k" ? "bg-purple-500" : "bg-gray-300"
+                } text-black py-2 px-4 rounded-lg`}
+                onClick={() => setSelectedModel("gpt-3.5-turbo-16k")}
+              >
+                GPT-3.5
+              </button>
+
+              <button
+                className={`${
+                  selectedModel === "gpt-4-0613" ? "bg-purple-700" : "bg-gray-300"
+                } text-black py-2 px-4 rounded-lg`}
+                onClick={handleGPT4ButtonClick}
+                title="Switch to GPT-4"
+              >
+                GPT-4
+              </button>
+
+              {chatHistory.length > -1 ? (
+                <button
+                  className="rounded-lg bg-gray-100 text-gray-600 py-2 px-4 flex-1"
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    clear();
+                    setMessage("");
+                  }}
+                >
+                  Clear
+                </button>
+              ) : null}
+
+            </div>
+
             <button
               className="absolute bottom-5 bg-blue-500 text-white px-4 py-2 rounded"
               onClick={logOut}
@@ -150,57 +192,40 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
         <div className="">
           {state === "idle" ? null : (
             <button
-              className="h-10 bg-gray-100 text-gray-900 py-2 px-4 my-8"
+              className="rounded-lg h-10 bg-gray-100 text-gray-900 py-2 px-4 my-8"
               onClick={cancel}
             >
-              Stop generating
+              Dừng trả lời
             </button>
           )}
         </div>
 
-        <section className=" rounded-lg p-2 sticky bottom-0">
-          <div className="flex justify-center space-x-4 mb-4">
+        <section className="flex flex-col rounded-lg p-2 sticky bottom-0">
+
+          <div className="flex justify-between space-x-4 mb-4">
 
             <button
               className={`${
                 selectedModel === "gpt-3.5-turbo-16k" ? "bg-purple-500" : "bg-gray-300"
-              } text-black py-2 px-4 rounded-lg`}
+              } text-black py-2 px-4 rounded-lg hidden md:flex-1`}
               onClick={() => setSelectedModel("gpt-3.5-turbo-16k")}
             >
-                GPT-3.5
+              GPT-3.5
             </button>
 
             <button
               className={`${
                 selectedModel === "gpt-4-0613" ? "bg-purple-700" : "bg-gray-300"
-              } text-black py-2 px-4 rounded-lg`}
+              } text-black py-2 px-4 rounded-lg hidden md:flex-1`}
               onClick={handleGPT4ButtonClick}
               title="Switch to GPT-4"
             >
               GPT-4
             </button>
-            
-          </div>
-          {showGPT4Message && (
-            <div className="text-red-500 text-sm mb-2">
-              Upgrade to PRO or PREMIUM to access GPT-4
-            </div>
-          )}
-          <form
-            className="flex"
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (canAccessGPT35) {
-                sendMessage(plan, message, chatHistory, selectedModel);
-                setMessage("");
-              } else {
-                // Handle a message to inform the user about their plan's access restriction
-              }
-            }}
-          >
-            {chatHistory.length > 1 ? (
+
+            {chatHistory.length > -1 ? (
               <button
-                className="bg-gray-100 text-gray-600 py-2 px-4 rounded-l-lg"
+                className="rounded-lg bg-gray-100 text-gray-600 py-2 px-4 hidden md:flex-1"
                 type="button"
                 onClick={(e) => {
                   e.preventDefault();
@@ -211,34 +236,72 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
                 Clear
               </button>
             ) : null}
-            <input
-              type="text"
-              ref={inputRef}
-              className="w-full rounded-l-lg p-2 outline-none"
-              placeholder={
-                canAccessGPT35
-                  ? state === "idle"
-                    ? "Type your message..."
-                    : "..."
-                  : "Upgrade to PRO or PREMIUM to access GPT-4"
-              }
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              disabled={!canAccessGPT35 || state !== "idle"}
-            />
-            {state === "idle" ? (
-              <button
-                className={`${
-                  canAccessGPT35 ? "bg-blue-700" : "bg-gray-300"
-                } text-white font-bold py-2 px-4 rounded-r-lg`}
-                type="submit"
-                disabled={!canAccessGPT35} // Disable the button if the user can't access GPT-3.5
-              >
-                Send
-              </button>
-            ) : null}
-          </form>
+
+            <form
+              className="flex flex-col items-stretch"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (canAccessGPT35) {
+                  sendMessage(plan, message, chatHistory, selectedModel);
+                  setMessage("");
+                  setInputHeight(null); // Reset the input height after submission
+                } else {
+                  // Handle a message to inform the user about their plan's access restriction
+                }
+              }}
+            >
+
+              {state === "idle" ? (
+                <button
+                  className={`${
+                    canAccessGPT35 ? "bg-blue-700" : "bg-gray-300"
+                  } text-white font-bold py-2 px-4 rounded-lg`}
+                  type="submit"
+                  disabled={!canAccessGPT35} // Disable the button if the user can't access GPT-3.5
+                >
+                  Gửi
+                </button>
+              ) : null}
+
+            </form>
+
+          </div>
+
+          {showGPT4Message && (
+            <div className="text-red-500 text-sm mb-2 hidden md:flex">
+              Nâng cấp PRO hoặc PREMIUM để sử dụng GPT-4
+            </div>
+          )}
+
+          <textarea
+            className="resize-none w-full rounded-lg p-2 outline-none"
+            placeholder={
+              canAccessGPT35
+                ? state === "idle"
+                  ? "... (dùng Enter để xuống dòng) ..."
+                  : "..."
+                : "Nâng cấp lên PRO hoặc PREMIUM để sử dụng GPT-4"
+            }
+            value={message}
+            onChange={(e) => {
+              setMessage(e.target.value);
+              // Dynamically adjust the textarea height as the user types, up to the maximum height
+              setInputHeight(
+                Math.min(e.target.scrollHeight, maxTextAreaHeight)
+              );
+            }}
+            style={{
+              height: inputHeight ? `${inputHeight}px` : "auto",
+              maxHeight: `${maxTextAreaHeight}px`, // Set the maximum height
+              overflowY: inputHeight ? "auto" : "hidden", // Add a scrollbar when needed
+            }}
+            rows={1} // Start with a single row
+            disabled={!canAccessGPT35 || state !== "idle"}
+          />
+
         </section>
+
+
       </main>
     </Chat>
   );

@@ -48,11 +48,13 @@ import {
     {
       title: "FREE",
       icon: "🆓",
-      price: "500.000đ/tháng hoặc Đăng ký miễn phí tài khoản chứng khoán VPS, không cần nạp tiền, không cần đăng ký gói dịch vụ",
+      price: "FREE TRIAL 30 ngày",
       features: [
-        "- Khả năng cập nhật thông tin mới nhất",
-        "- Ghi nhớ giá cổ phiếu thời gian thực",
+        "- Sử dụng công nghệ GPT-3.5-TURBO",
+        "- Dữ liệu tài chính cập nhật lên tục đến thời điểm hiện tại 24/7",
         "- Giải đáp chứng khoán cơ bản",
+        "- Phân tích kỹ thuật, phân tích tài chính",
+        "- Phân tích ngành, kinh tế vĩ mô",
       ],
       backgroundColor: "from-blue-500 to-white-800",
       star: false,
@@ -60,13 +62,11 @@ import {
     {
       title: "PRO",
       icon: "🔥",
-      price: "1.450.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 100.000.000đ",
+      price: "650.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 100.000.000đ",
       features: [
         "- GPT-4 access",
-        "- AI Phân tích kỹ thuật cổ phiếu",
-        "- AI Phân tích ngành",
-        "- AI Phân tích báo cáo tài chính",
-        "- Room cộng đồng, tư vấn ưu tiên",
+        "- Mọi tác vụ phân tích sẽ có chất lượng tốt hơn x5 lần so với bản FREE",
+        "- Support khi sử dụng TruongGPT"
       ],
       backgroundColor: "from-red-400 to-orange-700",
       star: true,
@@ -74,11 +74,12 @@ import {
     {
       title: "PREMIUM",
       icon: "🚀",
-      price: "2.850.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 1.000.000.000đ",
+      price: "1.850.000đ/tháng hoặc Nạp tiền giao dịch chứng khoán VPS từ 1.000.000.000đ",
       features: [
-        "- Hướng dẫn phân tích cổ phiếu bằng AI (nâng cao, prompt chuyên sâu)",
-        "- TruongGPT khuyến nghị cổ phiếu tiềm năng bằng AI",
-        "- Tư vấn 1-1 trong quá trình đầu tư và sử dụng TruongGPT, mức độ ưu tiên cao nhất",
+        "- Bật khả năng Khuyến Nghị cổ phiếu TruongGPT",
+        "- Bật khả năng phân tích giao dịch, theo dõi cá mập bằng AI",
+        "- Coaching 1-1 sử dụng TruongGPT để phân tích chứng khoán",
+        "- Support 24/7"
       ],
       backgroundColor: "from-green-500 to-purple-800",
       star: true,

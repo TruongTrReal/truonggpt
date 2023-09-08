@@ -32,7 +32,7 @@ export default async function handler(
     );
     const stream = await getChatStream(
       {
-        // Optional. This can also be set to a real user id, session id or leave blank.
+// Optional. This can also be set to a real user id, session id or leave blank.
         // See https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids
         user: context.ip,
         ...appConfig.apiConfig,
@@ -48,14 +48,14 @@ export default async function handler(
       model
 
     );
-    return new Response(stream, {
+return new Response(stream, {
       headers: {
         "Content-Type": "text/event-stream",
       },
     });
   } catch (e) {
     console.error(e);
-    return new Response(e.message, {
+        return new Response(e.message, {
       status: 500,
       headers: {
         "Content-Type": "text/plain",

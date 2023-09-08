@@ -52,7 +52,7 @@ export function useChat() {
   /**
    * Make API call to get data needed to answer the question
    */
-  const getDocumentAPI = async (plan:string, userMessage: string) => {
+  const getDocumentAPI = async (plan:string, userMessage: Array<ChatMessage>) => {
     try {
       const response = await axios.post('https://magnetic-eminent-bass.ngrok-free.app/api/truonggpt', {
         "plan": plan,
@@ -75,13 +75,26 @@ export function useChat() {
     
     setState("waiting");
     let chatContent = "";
-    const apiResponse = await getDocumentAPI(plan, message);
+    let apiResponse: ChatMessage | string = "";
+
+    // Check if chatHistory is empty
+    if (chatHistory.length === 0) {
+      // Handle the case when chatHistory is empty (e.g., send a welcome message)
+      // For example:
+      const firstMessage = { role: "user", content: message } as const;
+      apiResponse = await getDocumentAPI(plan, [firstMessage]);
+    } else {
+      // When chatHistory is not empty, proceed with sending user message and getting API response
+      apiResponse = await getDocumentAPI(plan, chatHistory);
+    }
+
 
     const newHistory = [
       ...chatHistory,
       { role: "user", content: message } as const,
       apiResponse,
     ];
+    
     setChatHistory(newHistory);
 
     const body = JSON.stringify({
