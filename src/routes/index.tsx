@@ -151,6 +151,12 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
 
             </div>
 
+            {showGPT4Message && (
+              <div className="text-red-500 text-sm mb-2 flex">
+                Nâng cấp PRO hoặc PREMIUM để sử dụng GPT-4
+              </div>
+            )}
+
             <button
               className="absolute bottom-5 bg-blue-500 text-white px-4 py-2 rounded"
               onClick={logOut}
