@@ -213,7 +213,7 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
             <button
               className={`${
                 selectedModel === "gpt-3.5-turbo-16k" ? "bg-purple-500" : "bg-gray-300"
-              } text-black py-2 px-4 rounded-lg hidden md:flex-1`}
+              } text-black py-2 px-4 rounded-lg hidden sm:flex`}
               onClick={() => setSelectedModel("gpt-3.5-turbo-16k")}
             >
               GPT-3.5
@@ -222,7 +222,7 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
             <button
               className={`${
                 selectedModel === "gpt-4-0613" ? "bg-purple-700" : "bg-gray-300"
-              } text-black py-2 px-4 rounded-lg hidden md:flex-1`}
+              } text-black py-2 px-4 rounded-lg hidden sm:flex`}
               onClick={handleGPT4ButtonClick}
               title="Switch to GPT-4"
             >
@@ -231,7 +231,7 @@ export default function Index({ plan, email, logOut, planButton }: IndexProps) {
 
             {chatHistory.length > -1 ? (
               <button
-                className="rounded-lg bg-gray-100 text-gray-600 py-2 px-4 hidden md:flex-1"
+                className="rounded-lg bg-gray-100 text-gray-600 py-2 px-4 hidden sm:flex"
                 type="button"
                 onClick={(e) => {
                   e.preventDefault();
